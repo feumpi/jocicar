@@ -1,4 +1,12 @@
-import { Controller, Get, Render, Param, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Render,
+  Param,
+  Post,
+  Body,
+  Redirect,
+} from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
 
 @Controller('clientes')
@@ -25,6 +33,7 @@ export class ClientesController {
   }
 
   @Post()
+  @Redirect('/clientes')
   async criarCliente(
     @Body()
     clienteData: {

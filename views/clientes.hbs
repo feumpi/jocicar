@@ -9,34 +9,115 @@
       type='text/css'
     />
   </head>
-  <body>
+  <body class='p-8'>
 
-    <table class='table table-zebra'>
+    <div
+      class='flex flex-col gap-4 items-center justify-center max-w-[1200px] mx-auto'
+    >
 
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>CPF</th>
-          <th>CNH</th>
-          <th>Telefone</th>
-          <th>E-mail</th>
-          <th>Endereço</th>
-        </tr>
-      </thead>
+      <h1 class='font-bold text-3xl'>Lista de clientes</h1>
 
-      <tbody>
-        {{#each clientes}}
+      <div class='flex justify-between w-full'>
+
+        <a href='/' class='btn btn-outline'>Voltar para o início</a>
+        <label for='novoClienteModal' class='btn btn-primary'>Cadastrar novo
+          cliente</label>
+      </div>
+
+      <table class='table table-zebra'>
+
+        <thead>
           <tr>
-            <td>{{this.nome}}</td>
-            <td>{{this.cpf}}</td>
-            <td>{{this.cnh}}</td>
-            <td>{{this.telefone}}</td>
-            <td>{{this.email}}</td>
-            <td>{{this.endereco}}</td>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>CNH</th>
+            <th>Telefone</th>
+            <th>E-mail</th>
+            <th>Endereço</th>
           </tr>
-        {{/each}}
-      </tbody>
-    </table>
+        </thead>
+
+        <tbody>
+          {{#each clientes}}
+            <tr>
+              <td>{{this.nome}}</td>
+              <td>{{this.cpf}}</td>
+              <td>{{this.cnh}}</td>
+              <td>{{this.telefone}}</td>
+              <td>{{this.email}}</td>
+              <td>{{this.endereco}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+    <input type='checkbox' id='novoClienteModal' class='modal-toggle' />
+    <div class='modal' role='dialog'>
+      <form action='' method='post'>
+        <div class='modal-box flex flex-col gap-4'>
+          <h3 class='text-lg font-bold'>Cadastrar novo cliente</h3>
+
+          <div class='flex flex-col gap-2'>
+
+            <input
+              class='input input-bordered'
+              type='text'
+              placeholder='Nome'
+              name='nome'
+              required
+            />
+
+            <input
+              class='input input-bordered'
+              type='text'
+              placeholder='CPF'
+              name='cpf'
+              required
+            />
+
+            <input
+              class='input input-bordered'
+              type='text'
+              placeholder='CNH'
+              name='cnh'
+              required
+            />
+
+            <input
+              class='input input-bordered'
+              type='text'
+              placeholder='Telefone'
+              name='telefone'
+              required
+            />
+
+            <input
+              class='input input-bordered'
+              type='email'
+              placeholder='E-mail'
+              name='email'
+              required
+            />
+
+            <input
+              class='input input-bordered'
+              type='text'
+              placeholder='Endereço'
+              name='endereco'
+              required
+            />
+
+          </div>
+          <div class='modal-action flex items-center justify-center'>
+
+            <label for='novoClienteModal' class='btn'>Cancelar</label>
+
+            <button type='submit' class='btn btn-primary'>Cadastrar cliente</button>
+          </div>
+        </div>
+      </form>
+    </div>
 
   </body>
 </html>
