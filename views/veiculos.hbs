@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Veiculos - Jocicar</title>
+  </head>
+  <body>
+    <ul>
+        {{#each veiculos}}
+            <li><a href="/veiculos/{{this.id}}">{{this.fabricante}} {{this.modelo}}</a></li>
+        {{/each}}
+    </ul>
+  </body>
+</html>

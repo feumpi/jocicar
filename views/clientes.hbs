@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Clientes - Jocicar</title>
+  </head>
+  <body>
+    <ul>
+        {{#each clientes}}
+            <li><a href="/clientes/{{this.id}}">{{this.nome}}</a></li>
+        {{/each}}
+    </ul>
+  </body>
+</html>
