@@ -55,4 +55,46 @@ export class VeiculosController {
 
     return { message: 'Veiculo criado com sucesso', result };
   }
+
+  @Post('remover')
+  @Redirect('/veiculos')
+  async removerVeiculo(
+    @Body()
+    veiculoData: {
+      id: number;
+    },
+  ) {
+    const { id } = veiculoData;
+    const result = await this.databaseService.query(
+      'DELETE FROM veiculos WHERE id = ?',
+      [id],
+    );
+
+    return { message: 'Veiculo removido com sucesso', result };
+  }
+
+  @Post('editar')
+  @Redirect('/veiculos')
+  async editarVeiculo(
+    @Body()
+    veiculoData: {
+      id: number;
+      placa: string;
+      fabricante: string;
+      modelo: string;
+      anoFabricacao: number;
+      anoModelo: number;
+      cor: string;
+    },
+  ) {
+    const { id, placa, fabricante, modelo, anoFabricacao, anoModelo, cor } =
+      veiculoData;
+
+    const result = await this.databaseService.query(
+      'UPDATE veiculos SET placa = ?, fabricante = ?, modelo = ?, ano_fabricacao = ?, ano_modelo = ?, cor = ? WHERE id = ?',
+      [placa, fabricante, modelo, anoFabricacao, anoModelo, cor, id],
+    );
+
+    return { message: 'Veiculo editado com sucesso', result };
+  }
 }

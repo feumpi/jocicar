@@ -34,6 +34,7 @@
             <th>Telefone</th>
             <th>E-mail</th>
             <th>Endereço</th>
+            <th>Ações</th>
           </tr>
         </thead>
 
@@ -46,6 +47,12 @@
               <td>{{this.telefone}}</td>
               <td>{{this.email}}</td>
               <td>{{this.endereco}}</td>
+              <td>
+                <form action='/clientes/remover' method='post'>
+                  <input type='hidden' name='id' value='{{this.id}}' />
+                  <button class='btn btn-sm btn-error'>Remover</button>
+                </form>
+              </td>
             </tr>
           {{/each}}
         </tbody>

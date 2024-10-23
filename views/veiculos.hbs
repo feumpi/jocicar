@@ -31,6 +31,7 @@
             <th>Ano</th>
             <th>Cor</th>
             <th>Disponibilidade</th>
+            <th>Ações</th>
           </tr>
         </thead>
 
@@ -47,7 +48,15 @@
 
               <td>{{#if this.disponivel}}✅{{/if}}
                 {{#unless this.disponivel}}❌{{/unless}}</td>
+
+              <td>
+                <form action='/veiculos/remover' method='post'>
+                  <input type='hidden' name='id' value='{{this.id}}' />
+                  <button class='btn btn-sm btn-error'>Remover</button>
+                </form>
+              </td>
             </tr>
+
           {{/each}}
         </tbody>
       </table>

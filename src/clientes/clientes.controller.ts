@@ -53,4 +53,44 @@ export class ClientesController {
 
     return { message: 'Cliente criado com sucesso', result };
   }
+
+  @Post('remover')
+  @Redirect('/clientes')
+  async removerCliente(
+    @Body()
+    clienteData: {
+      id: string;
+    },
+  ) {
+    const { id } = clienteData;
+    const result = await this.databaseService.query(
+      'DELETE FROM clientes WHERE id = ?',
+      [id],
+    );
+
+    return { message: 'Cliente removido com sucesso', result };
+  }
+
+  @Post('editar')
+  @Redirect('/clientes')
+  async editarCliente(
+    @Body()
+    clienteData: {
+      id: string;
+      nome: string;
+      cpf: string;
+      cnh: string;
+      telefone: string;
+      email: string;
+      endereco: string;
+    },
+  ) {
+    const { id, nome, cpf, cnh, telefone, email, endereco } = clienteData;
+    const result = await this.databaseService.query(
+      'UPDATE clientes SET nome = ?, cpf = ?, cnh = ?, telefone = ?, email = ?, endereco = ? WHERE id = ?',
+      [nome, cpf, cnh, telefone, email, endereco, id],
+    );
+
+    return { message: 'Cliente editado com sucesso', result };
+  }
 }
