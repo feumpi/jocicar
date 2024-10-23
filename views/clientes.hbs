@@ -48,10 +48,26 @@
               <td>{{this.email}}</td>
               <td>{{this.endereco}}</td>
               <td>
-                <form action='/clientes/remover' method='post'>
-                  <input type='hidden' name='id' value='{{this.id}}' />
-                  <button class='btn btn-sm btn-error'>Remover</button>
-                </form>
+                <div class='flex gap-2'>
+                  <form action='/clientes/remover' method='post'>
+                    <input type='hidden' name='id' value='{{this.id}}' />
+                    <button class='btn btn-sm btn-error'>Remover</button>
+                  </form>
+
+                  <label
+                    for='editarClienteModal'
+                    class='btn btn-sm btn-primary'
+                    onclick='
+                    document.getElementById("editar-cliente-id").value = "{{this.id}}";
+                    document.getElementById("editar-cliente-nome").value = "{{this.nome}}";
+                    document.getElementById("editar-cliente-cpf").value = "{{this.cpf}}";
+                    document.getElementById("editar-cliente-cnh").value = "{{this.cnh}}";
+                    document.getElementById("editar-cliente-telefone").value = "{{this.telefone}}";
+                    document.getElementById("editar-cliente-email").value = "{{this.email}}";
+                    document.getElementById("editar-cliente-endereco").value = "{{this.endereco}}";
+                  '
+                  >Editar</label>
+                </div>
               </td>
             </tr>
           {{/each}}
@@ -121,6 +137,81 @@
             <label for='novoClienteModal' class='btn'>Cancelar</label>
 
             <button type='submit' class='btn btn-primary'>Cadastrar cliente</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <input type='checkbox' id='editarClienteModal' class='modal-toggle' />
+    <div class='modal' role='dialog'>
+      <form action='/clientes/editar' method='post'>
+        <div class='modal-box flex flex-col gap-4'>
+          <h3 class='text-lg font-bold'>Editar cliente</h3>
+
+          <div class='flex flex-col gap-2'>
+
+            <input type='hidden' id='editar-cliente-id' name='id' />
+
+            <input
+              id='editar-cliente-nome'
+              class='input input-bordered'
+              type='text'
+              placeholder='Nome'
+              name='nome'
+              required
+            />
+
+            <input
+              id='editar-cliente-cpf'
+              class='input input-bordered'
+              type='text'
+              placeholder='CPF'
+              name='cpf'
+              required
+            />
+
+            <input
+              id='editar-cliente-cnh'
+              class='input input-bordered'
+              type='text'
+              placeholder='CNH'
+              name='cnh'
+              required
+            />
+
+            <input
+              id='editar-cliente-telefone'
+              class='input input-bordered'
+              type='text'
+              placeholder='Telefone'
+              name='telefone'
+              required
+            />
+
+            <input
+              id='editar-cliente-email'
+              class='input input-bordered'
+              type='email'
+              placeholder='E-mail'
+              name='email'
+              required
+            />
+
+            <input
+              id='editar-cliente-endereco'
+              class='input input-bordered'
+              type='text'
+              placeholder='Endereço'
+              name='endereco'
+              required
+            />
+
+          </div>
+          <div class='modal-action flex items-center justify-center'>
+
+            <label for='editarClienteModal' class='btn'>Cancelar</label>
+
+            <button type='submit' class='btn btn-primary'>Salvar edição</button>
           </div>
         </div>
       </form>

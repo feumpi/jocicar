@@ -50,10 +50,26 @@
                 {{#unless this.disponivel}}❌{{/unless}}</td>
 
               <td>
-                <form action='/veiculos/remover' method='post'>
-                  <input type='hidden' name='id' value='{{this.id}}' />
-                  <button class='btn btn-sm btn-error'>Remover</button>
-                </form>
+                <div class='flex gap-2'>
+                  <form action='/veiculos/remover' method='post'>
+                    <input type='hidden' name='id' value='{{this.id}}' />
+                    <button class='btn btn-sm btn-error'>Remover</button>
+                  </form>
+
+                  <label
+                    for='editarVeiculoModal'
+                    class='btn btn-sm btn-primary'
+                    onclick='
+                  document.getElementById("editar-veiculo-id").value = "{{this.id}}";
+                  document.getElementById("editar-veiculo-placa").value = "{{this.placa}}";
+                  document.getElementById("editar-veiculo-fabricante").value = "{{this.fabricante}}";
+                  document.getElementById("editar-veiculo-modelo").value = "{{this.modelo}}";
+                  document.getElementById("editar-veiculo-ano-fabricacao").value = "{{this.ano_fabricacao}}";
+                  document.getElementById("editar-veiculo-ano-modelo").value = "{{this.ano_modelo}}";
+                  document.getElementById("editar-veiculo-cor").value = "{{this.cor}}";
+                '
+                  >Editar</label>
+                </div>
               </td>
             </tr>
 
@@ -125,5 +141,81 @@
       </form>
     </div>
 
+    <input type='checkbox' id='editarVeiculoModal' class='modal-toggle' />
+    <div class='modal' role='dialog'>
+      <form action='/veiculos/editar' method='post'>
+        <div class='modal-box flex flex-col gap-4'>
+          <h3 class='text-lg font-bold'>Editar veículo</h3>
+
+          <div class='flex flex-col gap-2'>
+
+            <input
+              id='editar-veiculo-id'
+              class='input input-bordered'
+              type='hidden'
+              name='id'
+            />
+
+            <input
+              id='editar-veiculo-placa'
+              class='input input-bordered'
+              type='text'
+              placeholder='Placa'
+              name='placa'
+              required
+            />
+            <input
+              id='editar-veiculo-fabricante'
+              class='input input-bordered'
+              type='text'
+              placeholder='Fabricante'
+              name='fabricante'
+              required
+            />
+            <input
+              id='editar-veiculo-modelo'
+              class='input input-bordered'
+              type='text'
+              placeholder='Modelo'
+              name='modelo'
+              required
+            />
+            <input
+              id='editar-veiculo-ano-fabricacao'
+              class='input input-bordered'
+              type='number'
+              placeholder='Ano de fabricação'
+              name='anoFabricacao'
+              required
+            />
+            <input
+              id='editar-veiculo-ano-modelo'
+              class='input input-bordered'
+              type='number'
+              placeholder='Ano do modelo'
+              name='anoModelo'
+              required
+            />
+            <label class='flex gap-2 items-center'>
+              <span>Cor</span>
+              <input
+                id='editar-veiculo-cor'
+                class='input input-bordered w-48'
+                type='color'
+                name='cor'
+                placeholder='Cor'
+                required
+              />
+            </label>
+          </div>
+          <div class='modal-action flex items-center justify-center'>
+
+            <label for='editarVeiculoModal' class='btn'>Cancelar</label>
+
+            <button type='submit' class='btn btn-primary'>Salvar edição</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </body>
 </html>
