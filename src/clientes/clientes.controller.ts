@@ -1,22 +1,47 @@
-import { Controller, Get, Render, Param } from '@nestjs/common';
-import { DatabaseService } from '../database/database.service'; 
+import { Controller, Get, Render, Param, Post, Body } from '@nestjs/common';
+import { DatabaseService } from '../database/database.service';
 
 @Controller('clientes')
 export class ClientesController {
-  constructor(private readonly databaseService: DatabaseService) {} 
+  constructor(private readonly databaseService: DatabaseService) {}
 
   @Get()
-  @Render("clientes")
+  @Render('clientes')
   async findAllClientes() {
-    const clientes = await this.databaseService.query('SELECT * FROM clientes ORDER BY nome');
-    return {clientes};
+    const clientes = await this.databaseService.query(
+      'SELECT * FROM clientes ORDER BY nome',
+    );
+    return { clientes };
   }
 
   @Get(':id')
-  @Render("cliente")
+  @Render('cliente')
   async findClienteById(@Param('id') id: string) {
-    
-    const results = await this.databaseService.query('SELECT * FROM clientes WHERE id = ? LIMIT 1', [id]) as unknown[];
-    return { cliente: results[0] }
+    const results = (await this.databaseService.query(
+      'SELECT * FROM clientes WHERE id = ? LIMIT 1',
+      [id],
+    )) as unknown[];
+    return { cliente: results[0] };
+  }
+
+  @Post()
+  async criarCliente(
+    @Body()
+    clienteData: {
+      nome: string;
+      cpf: string;
+      cnh: string;
+      telefone: string;
+      email: string;
+      endereco: string;
+    },
+  ) {
+    const { nome, cpf, cnh, telefone, email, endereco } = clienteData;
+    const result = await this.databaseService.query(
+      'INSERT INTO clientes (nome, cpf, cnh, telefone, email, endereco) VALUES (?, ?, ?, ?, ?, ?)',
+      [nome, cpf, cnh, telefone, email, endereco],
+    );
+
+    return { message: 'Cliente criado com sucesso', result };
   }
 }

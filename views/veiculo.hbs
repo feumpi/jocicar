@@ -1,15 +1,22 @@
-<!DOCTYPE html>
-<html>
+<html data-theme='light'>
   <head>
-    <meta charset="utf-8" />
-    <title>{{veiculo.fabricante}} {{veiculo.modelo}} - Veiculos - Jocicar</title>
+    <meta charset='utf-8' />
+    <title>{{veiculo.fabricante}}
+      {{veiculo.modelo}}
+      - Veiculos - Jocicar</title>
+    <script src='https://cdn.tailwindcss.com'></script>
+    <link
+      href='https://cdn.jsdelivr.net/npm/daisyui@4.12.13/dist/full.min.css'
+      rel='stylesheet'
+      type='text/css'
+    />
   </head>
   <body>
     <ul>
-        <li>{{veiculo.fabricante}}</li>
-        <li>{{veiculo.modelo}}</li>
-        <li>{{veiculo.ano_fabricacao}} / {{veiculo.ano_modelo}}</li>
-        <li>{{veiculo.placa}}</li>
+      <li>{{veiculo.fabricante}}</li>
+      <li>{{veiculo.modelo}}</li>
+      <li>{{veiculo.ano_fabricacao}} / {{veiculo.ano_modelo}}</li>
+      <li>{{veiculo.placa}}</li>
     </ul>
   </body>
 </html>

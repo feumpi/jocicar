@@ -1,14 +1,120 @@
-<!DOCTYPE html>
-<html>
+<html data-theme='light'>
   <head>
-    <meta charset="utf-8" />
+    <meta charset='utf-8' />
     <title>Veiculos - Jocicar</title>
+    <script src='https://cdn.tailwindcss.com'></script>
+    <link
+      href='https://cdn.jsdelivr.net/npm/daisyui@4.12.13/dist/full.min.css'
+      rel='stylesheet'
+      type='text/css'
+    />
   </head>
-  <body>
-    <ul>
-        {{#each veiculos}}
-            <li><a href="/veiculos/{{this.id}}">{{this.fabricante}} {{this.modelo}}</a></li>
-        {{/each}}
-    </ul>
+  <body class='p-8'>
+
+    <div class='flex flex-col gap-4 items-center max-w-[1200px] mx-auto'>
+
+      <h1 class='font-bold text-3xl'>Lista de veículos</h1>
+
+      <div class='flex justify-between w-full'>
+
+        <a href='/' class='btn btn-outline'>Voltar para o início</a>
+        <label for='novoVeiculoModal' class='btn btn-primary'>Cadastrar novo
+          veículo</label>
+      </div>
+
+      <table class='table table-zebra'>
+        <thead>
+          <tr>
+            <th>Placa</th>
+            <th>Fabricante</th>
+            <th>Modelo</th>
+            <th>Ano</th>
+            <th>Cor</th>
+            <th>Disponibilidade</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each veiculos}}
+            <tr>
+              <td>{{this.placa}}</td>
+              <td>{{this.fabricante}}</td>
+              <td>{{this.modelo}}</td>
+              <td>{{this.ano_fabricacao}}/{{this.ano_modelo}}</td>
+              <td><div
+                  class='w-6 h-6 rounded-full bg-[{{this.cor}}]'
+                ></div></td>
+
+              <td>{{#if this.disponivel}}✅{{/if}}
+                {{#unless this.disponivel}}❌{{/unless}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+    <input type='checkbox' id='novoVeiculoModal' class='modal-toggle' />
+    <div class='modal' role='dialog'>
+      <form action='' method='post'>
+        <div class='modal-box flex flex-col gap-4'>
+          <h3 class='text-lg font-bold'>Cadastrar novo veículo</h3>
+
+          <div class='flex flex-col gap-2'>
+            <input
+              class='input input-bordered'
+              type='text'
+              placeholder='Placa'
+              name='placa'
+              required
+            />
+            <input
+              class='input input-bordered'
+              type='text'
+              placeholder='Fabricante'
+              name='fabricante'
+              required
+            />
+            <input
+              class='input input-bordered'
+              type='text'
+              placeholder='Modelo'
+              name='modelo'
+              required
+            />
+            <input
+              class='input input-bordered'
+              type='number'
+              placeholder='Ano de fabricação'
+              name='anoFabricacao'
+              required
+            />
+            <input
+              class='input input-bordered'
+              type='number'
+              placeholder='Ano do modelo'
+              name='anoModelo'
+              required
+            />
+            <label class='flex gap-2 items-center'>
+              <span>Cor</span>
+              <input
+                class='input input-bordered w-48'
+                type='color'
+                name='cor'
+                placeholder='Cor'
+                required
+              />
+            </label>
+          </div>
+          <div class='modal-action flex items-center justify-center'>
+
+            <label for='novoVeiculoModal' class='btn'>Cancelar</label>
+
+            <button type='submit' class='btn btn-primary'>Cadastrar veiculo</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
   </body>
 </html>

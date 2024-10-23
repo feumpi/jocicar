@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html>
+<html data-theme='light'>
   <head>
-    <meta charset="utf-8" />
-    <title>App</title>
+    <meta charset='utf-8' />
+    <title>Jocicar</title>
+    <script src='https://cdn.tailwindcss.com'></script>
+    <link
+      href='https://cdn.jsdelivr.net/npm/daisyui@4.12.13/dist/full.min.css'
+      rel='stylesheet'
+      type='text/css'
+    />
   </head>
-  <body>
-    {{ message }}
+  <body
+    class='bg-gray-200 flex flex-col p-4 gap-2 min-h-screen min-w-screen justify-center items-center text-black'
+  >
+    <div
+      class='flex flex-col gap-4 bg-white border shadow-md rounded-lg p-8 items-center justify-center'
+    >
+      <h1 class='text-black text-6xl uppercase font-bold'>Jocicar</h1>
+      <div class='flex flex-col gap-2'>
+        <p>Sistema de locadora de veículos desenvolvido para a C2 de Banco de
+          Dados</p>
+        <p>Professor: Howard Roatti</p>
+        <p>Alunos: Felipe Pereira Umpierre e Jocimar Rafael Pereira da Vitória</p>
+      </div>
+
+      <div class='flex flex-col gap-1'>
+        <p class='bg-gray-100 p-2 rounded-lg border'>Clientes cadastrados:
+          {{clientes}}</p>
+        <p class='bg-gray-100 p-2 rounded-lg border'>Veículos cadastrados:
+          {{veiculos}}</p>
+        <p class='bg-gray-100 p-2 rounded-lg border'>Alugueis realizados:
+          {{alugueis}}</p>
+      </div>
+    </div>
+
+    <div class='flex gap-4'>
+      <a class='btn btn-primary' href='/clientes'>Lista de clientes</a>
+      <a class='btn btn-secondary' href='/veiculos'>Lista de veículos</a>
+    </div>
   </body>
 </html>

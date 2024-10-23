@@ -1,14 +1,42 @@
-<!DOCTYPE html>
-<html>
+<html data-theme='light'>
   <head>
-    <meta charset="utf-8" />
+    <meta charset='utf-8' />
     <title>Clientes - Jocicar</title>
+    <script src='https://cdn.tailwindcss.com'></script>
+    <link
+      href='https://cdn.jsdelivr.net/npm/daisyui@4.12.13/dist/full.min.css'
+      rel='stylesheet'
+      type='text/css'
+    />
   </head>
   <body>
-    <ul>
+
+    <table class='table table-zebra'>
+
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>CPF</th>
+          <th>CNH</th>
+          <th>Telefone</th>
+          <th>E-mail</th>
+          <th>Endereço</th>
+        </tr>
+      </thead>
+
+      <tbody>
         {{#each clientes}}
-            <li><a href="/clientes/{{this.id}}">{{this.nome}}</a></li>
+          <tr>
+            <td>{{this.nome}}</td>
+            <td>{{this.cpf}}</td>
+            <td>{{this.cnh}}</td>
+            <td>{{this.telefone}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.endereco}}</td>
+          </tr>
         {{/each}}
-    </ul>
+      </tbody>
+    </table>
+
   </body>
 </html>
