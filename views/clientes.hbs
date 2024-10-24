@@ -8,6 +8,12 @@
       rel='stylesheet'
       type='text/css'
     />
+
+    <script>
+      function selecionarCliente() { localStorage.setItem('clienteSelecionado',
+      JSON.stringify({{this}})); alert('Cliente selecionado. Selecione um
+      veiculo para alugar.'); window.location.href = '/veiculos'; }
+    </script>
   </head>
   <body class='p-8'>
 
@@ -67,6 +73,11 @@
                     document.getElementById("editar-cliente-endereco").value = "{{this.endereco}}";
                   '
                   >Editar</label>
+
+                  <button
+                    class='btn btn-sm'
+                    onclick='selecionarCliente()'
+                  >Selecionar</button>
                 </div>
               </td>
             </tr>
