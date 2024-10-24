@@ -7,6 +7,10 @@ Alunos: Felipe Pereira Umpierre e Jocimar Rafael Pereira da Vitória
 
 2024/2
 
+## Diagrama
+![Diagrama](diagramas/jocicar.png)
+
+
 ## Ferramentas utilizadas
 * JavaScript
 * TypeScript
