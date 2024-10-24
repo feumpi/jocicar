@@ -1,0 +1,2 @@
+INSERT INTO jocicar.clientes (id, nome, cpf, cnh, telefone, email, endereco) VALUES (1, 'Felipe Umpierre', '15470055728', '01234567890', '27996945601', 'feumpi@icloud.com', 'Rua Areobaldo Bandeira, 241');
+INSERT INTO jocicar.clientes (id, nome, cpf, cnh, telefone, email, endereco) VALUES (2, 'Nichole Nicolini', '00000000000', '00000000000', '27000000000', 'nichole.nicolini@icloud.com', 'Marechal Floriano');
